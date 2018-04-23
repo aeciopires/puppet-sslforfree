@@ -17,12 +17,12 @@ class puppet_sslforfree::params {
   #Atribuicoes de variaveis de acordo com a distribuicao e versao GNU/Linux 
   case $::operatingsystem {
     'debian','ubuntu': {
-      $java_cacert     = '/usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts'
+      $java_cacert     = hiera('java_cacert', '/usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts')
       $distro_downcase = 'ubuntu'
     }
     'centos','redhat': {
       $java_version_redhat = '1.8.0_74'
-      $java_cacert         = "/usr/java/jdk${java_version_redhat}/jre/lib/security/cacerts"
+      $java_cacert         = hiera('java_cacert', "/usr/java/jdk${java_version_redhat}/jre/lib/security/cacerts")
       $distro_downcase     = 'redhat'
     }
     default: {
