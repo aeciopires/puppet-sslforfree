@@ -31,8 +31,8 @@ class puppet_sslforfree::params {
   }
 
   $manage_certificate_jks = hiera('manage_certificate_jks', true)
-  $download_certificate   = hiera('manage_certificate_jks', false)
-  $cert_download_url_base = "https://192.168.0.1/cert/"
+  $download_certificate   = hiera('download_certificate', false)
+  $cert_download_url_base = hiera('cert_download_url_base', 'https://192.168.0.1/cert/')
   $keytool                = hiera('keytool', '/usr/bin/keytool')
   $host_cert_key          = hiera('host_cert_key', 'private.key')
   $host_cert_crt          = hiera('host_cert_crt', 'certificate.crt')
@@ -45,7 +45,7 @@ class puppet_sslforfree::params {
   $ca_cert_alias          = hiera('ca_cert_alias', 'ca_sslforfree')
   $keystore_pass_default  = 'changeit'
   #$keystore_pass          = hiera('keystore_pass', 'pass_cert')
-  $keystore_pass          = "${keystore_pass_default}"
+  $keystore_pass          = $keystore_pass_default
   $certs_dir              = '/etc/sslforfree'
   $keystore_file          = "${certs_dir}/keystore.jks"
   $cacerts_file           = "${certs_dir}/cacerts.jks"

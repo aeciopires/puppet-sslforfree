@@ -19,7 +19,7 @@
 #   include puppet_sslforfree
 #
 class puppet_sslforfree(
-  
+
   #------------------------------------
   # ATENCAO! As variaveis referenciadas sao usadas neste manifest e/ou nos arquivos de templates.
   # ATTENTION! How referenced variables are used in this document and / or template files.
@@ -30,6 +30,9 @@ class puppet_sslforfree(
   $download_ca_cert       = $puppet_sslforfree::params::download_ca_cert,
   $download_host_cert_key = $puppet_sslforfree::params::download_host_cert_key,
   $download_host_cert_crt = $puppet_sslforfree::params::download_host_cert_crt,
+  $host_cert_key          = $puppet_sslforfree::params::host_cert_key,
+  $host_cert_crt          = $puppet_sslforfree::params::host_cert_crt,
+  $ca_cert                = $puppet_sslforfree::params::ca_cert,
   $certs_dir              = $puppet_sslforfree::params::certs_dir,
 
   ) inherits puppet_sslforfree::params {
@@ -41,16 +44,23 @@ class puppet_sslforfree(
 
   file { $certs_dir:
     ensure  => 'directory',
-    mode    => '775',
+    mode    => '0775',
     owner   => 'root',
     group   => 'root',
     recurse => true,
   }
 
-  package { ['wget',
-             'openssl',]:
-    ensure => present,
+  #Criando um recuso virtual do tipo Package para evitar erro de duplicacao de declaracao com outros modulos
+  @package{[
+    'wget',
+    'openssl', ]:
+    ensure => installed,
   }
+
+  # Realizando o recurso virtual
+  realize(Package['wget'],
+          Package['openssl'],
+  )
 
   if $download_certificate {
     exec { 'download_certificate':

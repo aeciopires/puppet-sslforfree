@@ -34,12 +34,14 @@ class puppet_sslforfree::check_space(
 
   #Testando se ha o espaco requerido
   if $free_space > $space_required {
-    notify{ 'info_free_space':
-      message => "[OK] Ha espaco livre suficiente em ${tmp_dir}. Espaco requerido: ${space_required} bytes, espaco livre: ${free_space} bytes",
+    notify{ 'info_free_space_disk':
+      message => "[OK] Ha espaco livre suficiente em ${tmp_dir}. Espaco requerido: ${space_required} bytes, \
+        espaco livre: ${free_space} bytes",
     }
   }
   else {
-    fail("[ERRO] Espaco insuficiente na particao ${tmp_dir}. Espaco requerido: ${space_required} bytes, espaco livre: ${free_space} bytes")
+    fail("[ERRO] Espaco insuficiente na particao ${tmp_dir}. Espaco requerido: ${space_required} bytes, espaco \
+      livre: ${free_space} bytes")
   }
 
 }

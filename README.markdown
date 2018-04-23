@@ -255,9 +255,9 @@ Where `` NAME_ENVIRONMENT`` should be changed by the name of the environment you
 and define which hosts will use the module, as shown in the example below. Example
 the configuration of the site.pp file
 
-~~~puppet
+~~~ puppet
 node "node1.domain.com.br" {
-include puppet_sslforfree
+    include puppet_sslforfree
 }
 ~~~
 
@@ -280,26 +280,26 @@ files of type "* .yaml").
 Below is an example of the Hiera configuration file, which should
 be located at: **/etc/puppetlabs/code/environments/NAME_ENVIRONMENT/hiera.yaml**
 
-~~~puppet
+~~~ puppet
 ---
 version: 5
-standards:
-datadir: hieradata
-data_hash: yaml_data
+defaults:
+  datadir: hieradata
+  data_hash: yaml_data
 hierarchy:
-- name: "Hosts"
-ways:
-- "host /% {:: trusted.certname} .yaml"
-- "host /% {:: facts.networking.fqdn} .yaml"
-- "host /% {:: facts.networking.hostname} .yaml"
+  - name: "Hosts"
+    paths:
+      - "host/%{::trusted.certname}.yaml"
+      - "host/%{::facts.networking.fqdn}.yaml"
+      - "host/%{::facts.networking.hostname}.yaml"
 
-- name: "Domains"
-ways:
-- "domain /% {:: trusted.domain} .yaml"
-- "domain /% {:: domain} .yaml"
+  - name: "Dominios"
+    paths:
+      - "domain/%{::trusted.domain}.yaml"
+      - "domain/%{::domain}.yaml"
 
-- name: "Common Data"
-path: "common.yaml"
+  - name: "Dados comuns"
+    path: "common.yaml"
 ~~~
 
 In this way, Hiera will seek, as a priority, the values ​​defined in the

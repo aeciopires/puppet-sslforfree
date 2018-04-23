@@ -70,6 +70,9 @@ class puppet_sslforfree::certificate_sslforfree(
         # Variavel referentes ao Java JRE da Oracle
         $java_cacert = $puppet_sslforfree::params::java_cacert
       }
+      default: {
+        fail('[ERRO] S.O NAO suportado.')
+      }
     }
 
     #Adicionando o certificado do trustore do Java da Oracle
