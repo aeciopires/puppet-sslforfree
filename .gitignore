@@ -4,5 +4,6 @@
 
 .idea/
 puppet-sslforfree.iml
+puppet_sslforfree.iml
 
 # End of https://www.gitignore.io/api/intellij+all

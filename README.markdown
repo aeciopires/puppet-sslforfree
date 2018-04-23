@@ -84,7 +84,7 @@ Para usar o módulo *puppet_sslforfree*, é necessário:
 
 * Baixar o módulo em:
 
-**https://github.com/aeciopires/puppet-sslforfree/releases**
+**https://github.com/aeciopires/puppet_sslforfree/releases**
 
 * Descompactar o pacote e copiar o diretório **puppet_sslforfree** para a máquina **puppetserver**.
 * Na máquina **puppetserver**, mova o diretório **puppet_sslforfree**
@@ -243,7 +243,7 @@ To use the **puppet_sslforfree** module, you must:
 
 * Download the module in:
 
-**https://github.com/aeciopires/puppet-sslforfree/releases**
+**https://github.com/aeciopires/puppet_sslforfree/releases**
 
 * Unzip the package and copy the **puppet_sslforfree** directory to the **puppetserver** machine.
 * On the **puppetserver** machine, move the directory **puppet_sslforfree**
