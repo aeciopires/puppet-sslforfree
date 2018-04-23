@@ -1,0 +1,19 @@
+---
+version: 5
+defaults:
+  datadir: hieradata
+  data_hash: yaml_data
+hierarchy:
+  - name: "Hosts"
+    paths:
+      - "host/%{::trusted.certname}.yaml"
+      - "host/%{::facts.networking.fqdn}.yaml"
+      - "host/%{::facts.networking.hostname}.yaml"
+
+  - name: "Dominios"
+    paths:
+      - "domain/%{::trusted.domain}.yaml"
+      - "domain/%{::domain}.yaml"
+
+  - name: "Dados comuns"
+    path: "common.yaml"
