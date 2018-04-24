@@ -1,8 +1,7 @@
 {
   "author": "Aecio Pires",
   "dependencies": [
-    {"name":"puppetlabs/apt","version_requirement":">= 4.4.0"},
-    {"name":"puppetlabs/stdlib","version_requirement":">= 4.17.0"}
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.17.0 < 8.0.0"}
   ],
   "license": "Apache-2.0",
   "name": "aeciopires-puppet_sslforfree",
