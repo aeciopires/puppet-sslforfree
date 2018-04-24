@@ -82,10 +82,11 @@ class puppet_sslforfree::certificate_sslforfree(
 
         ${keytool} -import -v -trustcacerts -alias ${ca_cert_alias} -file ${certs_dir}/${ca_cert} -keystore ${java_cacert} \
           -storepass '${keystore_pass_default}' -noprompt; \
+
         ${keytool} -import -v -trustcacerts -alias ${cert_alias} -file ${certs_dir}/${host_cert_crt} -keystore ${java_cacert} \
           -storepass '${keystore_pass_default}' -noprompt; \
         cd -; ",
-      onlyif   => "test 0 -lt $(${keytool} -list -keystore ${java_cacert} -alias ${cert_alias} \
+      onlyif   => "test 0 -lt $(${keytool} -list -keystore ${java_cacert} -alias ${ca_cert_alias} \
         -v -storepass '${keystore_pass_default}' | grep Exception | wc -l)",
       provider => 'shell',
       path     => ['/usr/local/sbin', '/usr/local/bin','/usr/sbin','/usr/bin','/sbin','/bin'],

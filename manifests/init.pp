@@ -100,7 +100,7 @@ class puppet_sslforfree(
 
     file { "${certs_dir}/${host_cert_key}":
       ensure  => file,
-      mode    => '0755',
+      mode    => '0750',
       owner   => 'root',
       group   => 'root',
       source  => 'puppet:///modules/puppet_sslforfree/certs_sslforfree/private.key',
