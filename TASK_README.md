@@ -53,7 +53,8 @@ Exemplo: *.domain.com.br
 let's encrypt. Basicamente as instruções envolvem:
 
 Criar uma entrada do tipo ``TXT`` para o ``host _acme-challenge.domain.com.br``,
-com o TTL 1 e o valor que for informado pelo site (exemplo: Q-ienMwRBHS1bBnJPgdfasdfasdfasdfasdfasfasdfsdfasf).
+com o TTL 1 e o valor que for informado pelo site
+(exemplo: Q-ienMwRBHS1bBnJPgdfasdfasdfasdfasdfasfasdfsdfasf).
 
 Quando faltar uma semana para expirar o certificado, o site enviará um
 email para o endereço informado na criação da conta. Basta repetir os
@@ -64,12 +65,13 @@ https://puppet.com/docs/bolt/latest/bolt_installing.html
 
 3. Sistema operacional: Debian 8.x, 9.x, CentOS 6.x, 7.x, Red Hat 6.x e
 7.x, Ubuntu 14.04, 16.04 e 18.04.
-4. Instalar os pacotes ``keytool`` nos servidores. Este pacote é obtido junto com o Java. Este módulo não
-instala o Java.
+4. Instale os pacotes ``keytool`` nos servidores. Este pacote é obtido junto
+com o Java. Este módulo não instala o Java.
 
 Observações:
 
-1. Para atualizar/renovar o certificado basta gerar o novo certificado no site https://www.sslforfree.com e salvar
+1. Para atualizar/renovar o certificado basta gerar o novo certificado no
+site https://www.sslforfree.com e salvar
 em um servidor web.
 2. Este módulo não configura os serviços para usar o certificado. Isso
 deve ser feito por outro módulo Puppet ou manualmente.
@@ -84,14 +86,16 @@ https://puppet.com/docs/bolt/latest/running_bolt_commands.html
 https://puppet.com/docs/bolt/latest/running_tasks_and_plans_with_bolt.html
 https://puppet.com/docs/bolt/latest/bolt_options.html
 
-* No host que tem o Puppet-Bolt, voce precisa criar o arquivo no padrao por exemplo: ``/home/user/hosts_puppet_bolt/HOSTS.txt``.
+* No host que tem o Puppet-Bolt, voce precisa criar o arquivo no padrao por
+exemplo: ``/home/user/hosts_puppet_bolt/HOSTS.txt``.
 
   Exemplo do conteudo do arquivo:
 
   server1.domain.com.br:22
   server2.domain.com.br:2220
 
-* Voce precisa usar uma conta que tenha permissao para executar o sudo em cada host remoto.
+* Voce precisa usar uma conta que tenha permissao para executar o sudo em cada
+host remoto.
 
 * Baixe o módulo em:
 
@@ -143,7 +147,8 @@ It also creates the certificate in JKS format.
 
 ## Requirements
 
-1. Generate the certificate at https://www.sslforfree.com, which uses the API Let's encrypt to generate valid and free  certificates with duration of 90 days.
+1. Generate the certificate at https://www.sslforfree.com, which uses the API
+Let's encrypt to generate valid and free  certificates with duration of 90 days.
 
   The tutorial for generating and renewing the certificate is:
 
@@ -152,26 +157,33 @@ free of charge.
 
   b) After logging in, click on ``Create one now``.
 
-  c) In the field that starts with https://, enter the domain name. Example: * .domain.com.br
+  c) In the field that starts with https://, enter the domain name.
+Example: * .domain.com.br
 
-  d) Access the external DNS service and follow the instructions quoted by let's encrypt. Basically the instructions involve:
+  d) Access the external DNS service and follow the instructions quoted by
+let's encrypt. Basically the instructions involve:
 
-Create an entry of type `` TXT`` for `` host _acme-challenge.domain.com.br``, with TTL 1 and the value that is reported by the site (example: Q-ienMwRBHS1bBnJPgdfasdfasdfasdfasdfasfasdfsdfasf).
+Create an entry of type `` TXT`` for `` host _acme-challenge.domain.com.br``,
+with TTL 1 and the value that is reported by the site
+(example: Q-ienMwRBHS1bBnJPgdfasdfasdfasdfasdfasfasdfsdfasf).
 
-When the certificate expires one week, the site will send a
-address you entered when creating your account. Just repeat the
-procedures.
+When the certificate expires one week, the site will send a address you entered
+ when creating your account. Just repeat the procedures.
 
 2. Install the Puppet-Bolt following the instructions on the page:
 https://puppet.com/docs/bolt/latest/bolt_installing.html
 
-3. Operating system: Debian 8.x, 9.x, CentOS 6.x, 7.x, Red Hat 6.x, and 7.x, Ubuntu 14.04, 16.04 and 18.04.
-4. Install the `` keytool`` packages on the servers. This package is obtained along with Java. This module does not installs Java.
+3. Operating system: Debian 8.x, 9.x, CentOS 6.x, 7.x, Red Hat 6.x, and 7.x,
+Ubuntu 14.04, 16.04 and 18.04.
+4. Install the `` keytool`` packages on the servers. This package is obtained
+along with Java. This module does not installs Java.
 
 Comments:
 
-1. To update / renew the certificate, simply generate the new certificate at https://www.sslforfree.com and save on a web server.
-2. This module does not configure services to use the certificate. That must be done by another Puppet module or manually.
+1. To update / renew the certificate, simply generate the new certificate at
+https://www.sslforfree.com and save on a web server.
+2. This module does not configure services to use the certificate. That must be
+done by another Puppet module or manually.
 
 ## Instructions
 
@@ -183,7 +195,8 @@ https://puppet.com/docs/bolt/latest/running_bolt_commands.html
 https://puppet.com/docs/bolt/latest/running_tasks_and_plans_with_bolt.html
 https://puppet.com/docs/bolt/latest/bolt_options.html
 
-* In the host that has the Puppet-Bolt, you need to create the file in the default example: ``/home/user/hosts_puppet_bolt/HOSTS.txt``.
+* In the host that has the Puppet-Bolt, you need to create the file in the
+default example: ``/home/user/hosts_puppet_bolt/HOSTS.txt``.
 
   Example of file content:
 
