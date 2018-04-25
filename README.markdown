@@ -17,12 +17,15 @@
     - [Requisitos][requisitos]
     - [Instruções de uso][Instruções]
     - [Hiera][Hiera]
+    - [TASK_README.md](TASK_README.md)
 2. [English][English]
     - [Requirements][requirements]
     - [Instructions][instructions]
     - [Hiera][Hiera]
+    - [TASK_README.md](TASK_README.md)
 3. [Developers][Developers]
-4. [License][License]
+4. [CHANGELOG.md](CHANGELOG.md)
+5. [License][License]
 
 # Português
 
@@ -66,7 +69,6 @@ procedimentos anteriores.
 instala o Java.
 5. Módulos puppet requisitos:
 
-* https://forge.puppetlabs.com/puppetlabs/apt
 * https://forge.puppetlabs.com/puppetlabs/stdlib
 
 Observações:
@@ -96,11 +98,11 @@ Onde ``NAME_ENVIRONMENT`` deve ser trocado pelo nome do environment que você qu
 e definir quais hosts usarão o módulo, conforme o exemplo abaixo. Exemplo
  da configuração do arquivo site.pp
 
-~~~ puppet 
+~~~ puppet
 node "node1.domain.com.br" {
     include puppet_sslforfree
 }
-~~~ 
+~~~
 
 * Executar o Puppet Agent no servidor ``node1.domain.com.br``.
 
@@ -121,7 +123,7 @@ arquivos do tipo "*.yaml").
 Abaixo está um exemplo do arquivo de configuração do Hiera, que deve
 ficar localizado em: **/etc/puppetlabs/code/environments/NAME_ENVIRONMENT/hiera.yaml**
 
-~~~ puppet 
+~~~ puppet
 ---
 version: 5
 defaults:
@@ -160,7 +162,7 @@ Mesmo que nenhum destes arquivos existam, serão aplicados os valores padrão de
 
 ### Exemplo do arquivo *.yaml
 
-~~~ puppet 
+~~~ puppet
 #---------------------
 #BEGIN
 #---------------------
@@ -226,7 +228,6 @@ when creating your account. Just repeat the procedures.
 installs Java.
 5. Puppet Module Requirements:
 
-* https://forge.puppetlabs.com/puppetlabs/apt
 * https://forge.puppetlabs.com/puppetlabs/stdlib
 
 Comments:
