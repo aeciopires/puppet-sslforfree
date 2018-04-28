@@ -6,15 +6,17 @@
 space_required: 2000000
 tmp_dir: '/tmp'
 manage_certificate_jks: true
-download_certificate: false
+overwrite_certificate: false
+download_certificate: true
 cert_download_url_base: 'https://192.168.0.1/cert'
 keytool: '/usr/bin/keytool'
 host_cert_key: 'private.key'
 host_cert_crt: 'certificate.crt'
 ca_cert: 'ca_bundle.crt'
-host_cert_pass: ''
+host_cert_pass: ''7
 cert_alias: 'sslforfree'
 ca_cert_alias: 'ca_sslforfree'
+certs_dir: '/etc/sslforfree'
 java_cacert: '/usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts'
 
 #---------------------

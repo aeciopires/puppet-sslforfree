@@ -13,8 +13,10 @@
 class puppet_sslforfree::check_space(
 
   #------------------------------------
-  # ATENCAO! As variaveis referenciadas sao usadas neste manifest e/ou nos arquivos de templates.
-  # ATTENTION! How referenced variables are used in this document and / or template files.
+  # ATENCAO! As variaveis referenciadas sao usadas neste manifest e/ou nos
+  #   arquivos de templates.
+  # ATTENTION! How referenced variables are used in this document and / or
+  #   template files.
   #------------------------------------
 
   #Variaveis gerais
@@ -35,13 +37,12 @@ class puppet_sslforfree::check_space(
   #Testando se ha o espaco requerido
   if $free_space > $space_required {
     notify{ 'info_free_space_disk':
-      message => "[OK] Ha espaco livre suficiente em ${tmp_dir}. Espaco requerido: ${space_required} bytes, \
-        espaco livre: ${free_space} bytes",
+      message => "[OK] There is sufficient free space in ${tmp_dir}. Space \
+        required: ${space_required} bytes, free space: ${free_space} bytes",
     }
   }
   else {
-    fail("[ERRO] Espaco insuficiente na particao ${tmp_dir}. Espaco requerido: ${space_required} bytes, espaco \
-      livre: ${free_space} bytes")
+    fail("[ERROR] Insufficient space in partition ${tmp_dir}. Space required: \
+      ${space_required} bytes, free space: ${free_space} bytes")
   }
-
 }

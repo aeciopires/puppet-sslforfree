@@ -3,7 +3,7 @@
 # Define parametros e valores padrao do modulo.
 # Sets parameters and default values of the module.
 #
-# Atencao: 
+# Atencao:
 #   Alguns parametros podem ter valores customizados de acordo com o servidor.
 #   Some parameters may have custom values according to the server.
 #
@@ -14,25 +14,29 @@ class puppet_sslforfree::params {
   $tmp_dir              = hiera('tmp_dir', '/tmp')
   $file_hiera           = '/etc/puppetlabs/code/hiera.yaml'
 
-  #Atribuicoes de variaveis de acordo com a distribuicao e versao GNU/Linux 
+  #Atribuicoes de variaveis de acordo com a distribuicao e versao GNU/Linux
   case $::operatingsystem {
     'debian','ubuntu': {
-      $java_cacert     = hiera('java_cacert', '/usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts')
+      $java_cacert     = hiera('java_cacert',
+        '/usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts')
       $distro_downcase = 'ubuntu'
     }
     'centos','redhat': {
       $java_version_redhat = '1.8.0_74'
-      $java_cacert         = hiera('java_cacert', "/usr/java/jdk${java_version_redhat}/jre/lib/security/cacerts")
+      $java_cacert         = hiera('java_cacert',
+        "/usr/java/jdk${java_version_redhat}/jre/lib/security/cacerts")
       $distro_downcase     = 'redhat'
     }
     default: {
-      fail('[ERRO] S.O NAO suportado.')
+      fail('[ERROR] S.O NOT supported.')
     }
   }
 
   $manage_certificate_jks = hiera('manage_certificate_jks', true)
-  $download_certificate   = hiera('download_certificate', false)
-  $cert_download_url_base = hiera('cert_download_url_base', 'https://192.168.0.1/cert/')
+  $overwrite_certificate  = hiera('overwrite_certificate', false)
+  $download_certificate   = hiera('download_certificate', true)
+  $cert_download_url_base = hiera('cert_download_url_base',
+    'https://192.168.0.1/cert/')
   $keytool                = hiera('keytool', '/usr/bin/keytool')
   $host_cert_key          = hiera('host_cert_key', 'private.key')
   $host_cert_crt          = hiera('host_cert_crt', 'certificate.crt')
@@ -46,7 +50,7 @@ class puppet_sslforfree::params {
   $keystore_pass_default  = 'changeit'
   #$keystore_pass          = hiera('keystore_pass', 'pass_cert')
   $keystore_pass          = $keystore_pass_default
-  $certs_dir              = '/etc/sslforfree'
+  $certs_dir              = hiera('certs_dir', '/etc/sslforfree')
   $keystore_file          = "${certs_dir}/keystore.jks"
   $cacerts_file           = "${certs_dir}/cacerts.jks"
 }
