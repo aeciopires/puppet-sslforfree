@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org).
 
 ## Release [1.2.0]
 ### Summary
-This is a pacth release, it includes enhancements to the documentation and new
+This is a minor release, it includes enhancements to the documentation and new
 configuration parameter and code snippet that can replace an existing
 certificate in a JKS repository.
 
