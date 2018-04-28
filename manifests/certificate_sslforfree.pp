@@ -45,7 +45,7 @@ class puppet_sslforfree::certificate_sslforfree(
         ${keytool} -delete -keystore ${keystore_file} -alias ${cert_alias} \
           -storepass ${keystore_pass} -noprompt; ",
       onlyif   => "true; \
-        test 0 -ne $(${keytool} -list -keystore ${keystore_file} \
+        test 0 -eq $(${keytool} -list -keystore ${keystore_file} \
         -alias ${cert_alias} -v -storepass '${keystore_pass}' | grep Exception \
         | wc -l)",
       provider => 'shell',
@@ -61,7 +61,7 @@ class puppet_sslforfree::certificate_sslforfree(
         ${keytool} -delete -keystore ${cacerts_file} -alias ${ca_cert_alias} \
           -storepass ${keystore_pass} -noprompt; ",
       onlyif   => "true; \
-        test 0 -ne $(${keytool} -list -keystore ${cacerts_file} \
+        test 0 -eq $(${keytool} -list -keystore ${cacerts_file} \
         -alias ${ca_cert_alias} -v -storepass '${keystore_pass}' \
         | grep Exception | wc -l)",
       provider => 'shell',
@@ -77,7 +77,7 @@ class puppet_sslforfree::certificate_sslforfree(
         ${keytool} -delete -keystore ${java_cacert} -alias ${ca_cert_alias} \
           -storepass ${keystore_pass_default} -noprompt; ",
       onlyif   => "true; \
-        test 0 -ne $(${keytool} -list -keystore ${java_cacert} \
+        test 0 -eq $(${keytool} -list -keystore ${java_cacert} \
         -alias ${ca_cert_alias} -v -storepass '${keystore_pass_default}' \
         | grep Exception | wc -l)",
       provider => 'shell',
@@ -92,7 +92,8 @@ class puppet_sslforfree::certificate_sslforfree(
       command  => "true; \
         ${keytool} -delete -keystore ${java_cacert} -alias ${cert_alias} \
           -storepass ${keystore_pass_default} -noprompt; ",
-      onlyif   => "test 0 -ne $(${keytool} -list -keystore ${java_cacert} \
+      onlyif   => "true; \
+        test 0 -eq $(${keytool} -list -keystore ${java_cacert} \
         -alias ${cert_alias} -v -storepass '${keystore_pass_default}' \
         | grep Exception | wc -l)",
       provider => 'shell',
