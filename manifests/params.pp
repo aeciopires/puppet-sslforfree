@@ -45,12 +45,12 @@ class puppet_sslforfree::params {
   $download_host_cert_key = "${cert_download_url_base}/${host_cert_key}"
   $download_host_cert_crt = "${cert_download_url_base}/${host_cert_crt}"
   $host_cert_pass         = hiera('host_cert_pass', '')
-  $cert_alias             = hiera('cert_alias', 'sslforfree')
-  $ca_cert_alias          = hiera('ca_cert_alias', 'ca_sslforfree')
+  $cert_alias             = hiera('cert_alias', 'sslfree')
+  $ca_cert_alias          = hiera('ca_cert_alias', 'ca_sslfree')
   $keystore_pass_default  = 'changeit'
   #$keystore_pass          = hiera('keystore_pass', 'pass_cert')
   $keystore_pass          = $keystore_pass_default
-  $certs_dir              = hiera('certs_dir', '/etc/sslforfree')
+  $certs_dir              = hiera('certs_dir', '/etc/sslfree')
   $keystore_file          = "${certs_dir}/keystore.jks"
   $cacerts_file           = "${certs_dir}/cacerts.jks"
 }
