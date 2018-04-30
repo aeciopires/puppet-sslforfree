@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org).
 ## 2018-04-30 Release [1.3.1]
 ### Summary
 
-This is a minor release, it includes documentation update.
+This is a patch release, it includes documentation update.
 
 ## 2018-04-29 Release [1.3.0]
 ### Summary
