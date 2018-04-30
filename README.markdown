@@ -34,70 +34,67 @@
 Este é o modulo *puppet_sslforfree*.
 
 Instala e gerencia o certificado assinado pelos sites:
-https://www.sslforfree.com
-https://zerossl.com
-https://gethttpsforfree.com
+
+- https://www.sslforfree.com
+- https://zerossl.com
+- https://gethttpsforfree.com
 
 Também cria o certificado no formato JKS.
 
+Para aprender mais sobre o uso do Puppet, recomendo a leitura do livro que
+publiquei pela Novatec:
+
+https://novatec.com.br/livros/puppet
+
+Veja também os links que estão nesta página:
+
+http://blog.aeciopires.com/primeiros-passos-com-o-puppet
+
 ## Requisitos
 
-1. Acesse um dos sites abaixo e gere o certificado de host ou wildcard conforme
+1. Acesse um dos sites anteriores e gere o certificado de host ou wildcard conforme
 as instruções disponíveis. Ambos usam a API do Let's encrypt para assinar os
 certificados válidos e gratuitos com duração de 90 dias.
-
-https://www.sslforfree.com
-https://zerossl.com
-https://gethttpsforfree.com
-
 2. Puppet 4.x ou superior
 3. Sistema operacional: Debian 8.x, 9.x, CentOS 6.x, 7.x, Red Hat 6.x e
 7.x, Ubuntu 14.04, 16.04 e 18.04.
-4. Instalar os pacotes ``keytool`` obtido junto com o Java. Este módulo não
+4. Instalar o pacote ``keytool`` obtido junto com o Java. Este módulo não
 instala o Java.
-5. Módulos puppet requisitos:
-
-* https://forge.puppetlabs.com/puppetlabs/stdlib
 
 Observações:
 
-1. Para atualizar/renovar o certificado basta mudar o valor do parametro
+- Para atualizar/renovar o certificado basta mudar o valor do parâmetro
 ``overwrite_certificate`` para ``true`` e informar a nova URL de download em
 ``cert_download_url_base``, após gerar o novo certificado e salvá-lo em um
 servidor web.
-
-2. Este módulo não configura os serviços para usar o certificado. Isso
+- Este módulo não configura os serviços para usar o certificado. Isso
 deve ser feito por outro módulo Puppet ou manualmente.
 
 ## Instruções de Uso
 
-Para usar o módulo *puppet_sslforfree*, é necessário:
-
-* Baixar o módulo em:
-
+Baixe o módulo em:
 **https://github.com/aeciopires/puppet_sslforfree/releases**
 
-* Descompactar o pacote e copiar o diretório **puppet_sslforfree** para a
+Descompacte o pacote e copiar o diretório **puppet_sslforfree** para a
 máquina **puppetserver**.
-* Na máquina **puppetserver**, mova o diretório **puppet_sslforfree**
-para o diretório de módulos, por exemplo:
-**/etc/puppetlabs/code/environments/NAME_ENVIRONMENT/modules/**
 
-Onde ``NAME_ENVIRONMENT`` deve ser trocado pelo nome do environment que você
+Na máquina **puppetserver**, mova o diretório **puppet_sslforfree**
+para o diretório de módulos, por exemplo:
+**/etc/puppetlabs/code/environments/NAME_ENVIRONMENT/modules/**. Onde ``NAME_ENVIRONMENT`` deve ser trocado pelo nome do environment que você
 quer usar no PuppetServer.
 
-* Editar o aquivo
+Edite o aquivo
 **/etc/puppetlabs/code/environments/NAME_ENVIRONMENT/manifests/site.pp**
 e definir quais hosts usarão o módulo, conforme o exemplo abaixo. Exemplo
- da configuração do arquivo site.pp
+ da configuração do arquivo ``site.pp``.
 
 ~~~ puppet
-node "node1.domain.com.br" {
+node node1.domain.com.br {
     include puppet_sslforfree
 }
 ~~~
 
-* Executar o Puppet Agent no servidor ``node1.domain.com.br``.
+Execute o Puppet Agent no servidor ``node1.domain.com.br``.
 
 ~~~ bash
 puppet agent -t
@@ -156,7 +153,7 @@ só serão aplicadas em último caso.
 Mesmo que nenhum destes arquivos existam, serão aplicados os valores padrão
 definidos na classe **params.pp**.
 
-### Exemplo do arquivo *.yaml
+### Exemplo do arquivo .yaml
 
 ~~~ puppet
 #---------------------
@@ -190,70 +187,58 @@ java_cacert: '/usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts'
 This is the **puppet_sslforfree** module.
 
 Installs and manages the certificate signed by the sites:
-https://www.sslforfree.com
-https://zerossl.com
-https://gethttpsforfree.com
+
+- https://www.sslforfree.com
+- https://zerossl.com
+- https://gethttpsforfree.com
 
 It also creates the certificate in JKS format.
 
 ## Requirements
 
-1. Access one of the sites below and generate the host or wildcard certificate.
+1. Access one of the sites previous and generate the host or wildcard certificate.
 Both use the Let's encrypt API to sign the valid and free certificates with a
 duration of 90 days.
-
-https://www.sslforfree.com
-https://zerossl.com
-https://gethttpsforfree.com
-
 2. Puppet 4.x or higher
 3. Operating System: Debian 8.x, 9.x, CentOS 6.x, 7.x, Red Hat 6.x and
 7.x, Ubuntu 14.04, 16.04 and 18.04.
 4. Install the ``keytool`` packages obtained with Java. This module does not
 installs Java.
-5. Puppet Module Requirements:
-
-* https://forge.puppetlabs.com/puppetlabs/stdlib
 
 Comments:
 
-1. To update/renew the certificate, simply change the value of the parameter
+- To update/renew the certificate, simply change the value of the parameter
 ``overwrite_certificate`` to `` true`` and enter the new download URL at
 ``cert_download_url_base`` after generating the new certificate and save it to
 a web server.
-
-2. This module does not configure services to use the certificate. what
+- This module does not configure services to use the certificate. You
 MUST be done by another Puppet module or manually.
 
 ## Instructions
 
-To use the **puppet_sslforfree** module, you MUST:
-
-* Download the module in:
-
+Download the module in:
 **https://github.com/aeciopires/puppet_sslforfree/releases**
 
-* Unzip the package and copy the **puppet_sslforfree** directory to the
-  **puppetserver** machine.
-* On the **puppetserver** machine, move the directory **puppet_sslforfree**
-to the modules directory, for example:
-**/etc/puppetlabs/code/environments/NAME_ENVIRONMENT/modules/**
+Unzip the package and copy the **puppet_sslforfree** directory to the
+ **puppetserver** machine.
 
-Where ``NAME_ENVIRONMENT`` should be changed by the name of the environment
+On the **puppetserver** machine, move the directory **puppet_sslforfree**
+to the modules directory, for example:
+**/etc/puppetlabs/code/environments/NAME_ENVIRONMENT/modules/**. Where ``NAME_ENVIRONMENT`` should be changed by the name of the environment
 you want to use in PuppetServer.
 
-* Edit the file
+Edit the file
 **/etc/puppetlabs/code/environments/NAME_ENVIRONMENT/manifests/site.pp**
-and define which hosts will use the module, as shown in the example below. Example
-the configuration of the site.pp file
+and define which hosts will use the module, as shown in the example below.
+Example of the configuration of the ``site.pp`` file
 
 ~~~ puppet
-node "node1.domain.com.br" {
+node node1.domain.com.br {
     include puppet_sslforfree
 }
 ~~~
 
-* Run the Puppet Agent on the ``node1.domain.com`` server.
+Run the Puppet Agent on the ``node1.domain.com`` server.
 
 ~~~ bash
 puppet agent -t
@@ -286,12 +271,12 @@ hierarchy:
       - "host/%{::facts.networking.fqdn}.yaml"
       - "host/%{::facts.networking.hostname}.yaml"
 
-  - name: "Dominios"
+  - name: "Domains"
     paths:
       - "domain/%{::trusted.domain}.yaml"
       - "domain/%{::domain}.yaml"
 
-  - name: "Dados comuns"
+  - name: "Common"
     path: "common.yaml"
 ~~~
 
@@ -312,14 +297,14 @@ file, will only be applied in the latter case.
 Even if none of these files exist, the default values ​​defined in the
 **params.pp** class will be applied.
 
-### Sample file * .yaml
+### Sample file .yaml
 
 ~~~ puppet
 #---------------------
 #BEGIN
 #---------------------
 
-#Space Required: 2 MB ou 2.000.000 bytes
+#Space Required: 2 MB or 2.000.000 bytes
 space_required: 2000000
 tmp_dir: '/tmp'
 manage_certificate_jks: true
@@ -361,7 +346,8 @@ java_cacert: '/usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts'
 
 ### manage_certificate_jks
 
-**Description:** If ``true``, it manages the certificate. If ``false`` does nothing.
+**Description:** If ``true``, it manages the certificate. If ``false`` does
+nothing.
 
 **Data type:** Boolean.
 
@@ -369,10 +355,10 @@ java_cacert: '/usr/lib/jvm/java-8-oracle/jre/lib/security/cacerts'
 
 ### overwrite_certificate
 
-**Description:** If ``true``, overwrite the certificate with the same alias every
-round of the puppet agent. If ``false``, keep the certificate. To register
-the new you must change the alias of the new certificate in the parameters:
- ``cert_alias`` and ``ca_cert_alias``.
+**Description:** If ``true``, overwrite the certificate with the same alias
+every round of the puppet agent. If ``false``, keep the certificate and to
+register the new you must change the alias of the new certificate in the
+parameters: ``cert_alias`` and ``ca_cert_alias``.
 
 **Data type:** Boolean.
 
@@ -380,12 +366,11 @@ the new you must change the alias of the new certificate in the parameters:
 
 ### download_certificate
 
-**Description:** If ``true``, download the certificate from the URL formed by the
-concatenation of the parameters: ``$cert_download_url_base/$host_cert_key``,
+**Description:** If ``true``, download the certificate from the URL formed by
+the concatenation of the parameters: ``$cert_download_url_base/$host_cert_key``,
 ``$cert_download_url_base/$host_cert_crt`` and
-``$cert_download_url_base/$ca_cert``.
-If ``false``, you must to update the content of the files in the module
-directory in ``files/certs_sslfree``.
+``$cert_download_url_base/$ca_cert``. If ``false``, you must to update the
+content of the files in the module directory in ``files/certs_sslfree``.
 
 **Data type:** Boolean.
 
